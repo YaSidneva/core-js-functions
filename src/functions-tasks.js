@@ -18,20 +18,7 @@
  *
  */
 function getCurrentFunctionName() {
-  const { stack } = new Error();
-  const stackLines = stack.split('\n');
-  let currentFunctionLine;
-  for (let i = 1; i < stackLines.length; i += 1) {
-    if (!stackLines[i].includes('getCurrentFunctionName')) {
-      currentFunctionLine = stackLines[i].trim();
-      break;
-    }
-  }
-  const functionName = currentFunctionLine.substring(
-    0,
-    currentFunctionLine.indexOf('(')
-  );
-  return functionName || 'anonymous';
+  throw new Error('Not implemented');
 }
 
 /**
@@ -45,11 +32,8 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(func) {
-  if (typeof func !== 'function') {
-    throw new Error('Invalid input: not a function');
-  }
-  return func.toString();
+function getFunctionBody() {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -198,22 +182,8 @@ function retry(func, attempts) {
  * cos(3.141592653589793) ends
  *
  */
-function logger(func, logFunc) {
-  return function (...args) {
-    const functionName = func.name || 'anonymous';
-    logFunc(
-      `${functionName}(${args
-        .map((arg) => JSON.stringify(arg))
-        .join(', ')}) starts`
-    );
-    const result = func(...args);
-    logFunc(
-      `${functionName}(${args
-        .map((arg) => JSON.stringify(arg))
-        .join(', ')}) ends`
-    );
-    return result;
-  };
+function logger(/* func, logFunc */) {
+  throw new Error('Not implemented');
 }
 
 /**
